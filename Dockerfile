@@ -3,7 +3,7 @@ RUN mkdir /app
 COPY . /app
 
 RUN apk update && \
-    apk add nodejs npm git \
+    apk add nodejs npm \
     chmod +x app/start.sh
 
 WORKDIR /app
