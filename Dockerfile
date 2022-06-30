@@ -1,9 +1,9 @@
 FROM alpine:latest
+RUN mkdir /app
+COPY . /app
 
 RUN apk update && \
     apk add nodejs npm git && \
-    git clone https://github.com/lendradxx/profile app && \
-    cd app && npm install && cd .. && \
     chmod +x app/start.sh
 
 WORKDIR /app
