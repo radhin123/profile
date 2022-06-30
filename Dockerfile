@@ -1,11 +1,11 @@
-FROM ubuntu:latest
+FROM alpine:latest
 
-RUN apt update -y && apt upgrade -y \
-    apt install nodejs npm git \
-    git clone https://github.com/lendradxx/profile app \
-    cd app && npm install && cd .. \
-    chmod +x /app/start.sh && mv app /app
+RUN apk update && \
+    apk add nodejs npm git && \
+    git clone https://github.com/lendradxx/profile app && \
+    cd app && npm install && cd .. && \
+    chmod +x app/start.sh
 
 WORKDIR /app
 EXPOSE 3000
-CMD [ "npm", "run serve" ]
+CMD [ "./start.sh" ]
